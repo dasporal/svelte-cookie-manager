@@ -39,8 +39,7 @@
 			class={`
     text-center text-xs font-medium sm:text-left sm:text-sm
     ${theme === 'light' ? 'text-gray-700' : 'text-gray-200'}
-  `}
-		>
+  `}>
 			{message}
 		</p>
 	</div>
@@ -54,8 +53,7 @@
     text-xs font-medium
     ${theme === 'light' ? 'text-gray-500 hover:text-gray-700' : 'text-gray-400 hover:text-gray-200'}
     transition-colors duration-200
-  `}
-			>
+  `}>
 				{privacyPolicyText}
 			</a>
 		{/if}
@@ -71,8 +69,7 @@
     hover:scale-105 hover:border-blue-600
     hover:text-blue-600 focus:outline-none focus:outline-transparent
     focus-visible:outline-none focus-visible:outline-transparent
-  `}
-				>
+  `}>
 					{manageButtonText}
 				</button>
 			{/if}
@@ -84,8 +81,7 @@
     transition-all duration-200
     hover:scale-105 focus:outline-none focus:outline-transparent
     focus-visible:outline-none focus-visible:outline-transparent
-  `}
-			>
+  `}>
 				{declineButtonText}
 			</button>
 			<button
@@ -96,8 +92,7 @@
     duration-200 hover:scale-105
     hover:bg-blue-600 focus:outline-none focus:outline-transparent
     focus-visible:outline-none focus-visible:outline-transparent
-  `}
-			>
+  `}>
 				{buttonText}
 			</button>
 		</div>

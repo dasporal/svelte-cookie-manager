@@ -1,12 +1,14 @@
 <script lang="ts">
+	import { browser } from '$app/environment';
 	import CookieManager from '$lib/CookieManager.svelte';
 	import '$lib/styles.css';
 	import { getCurrentConsent } from '$lib/utils/cookie.svelte.js';
+	import { getTheme } from '$lib/utils/theme.svelte.js';
 
 	let displayType: 'popup' | 'banner' | 'modal' = $state('popup');
 	let isVisible = $state(false);
-	let theme = $state('light');
 	let currentConsent = $state(getCurrentConsent());
+	let theme = $state(getTheme());
 
 	function showConsentBanner() {
 		isVisible = true;

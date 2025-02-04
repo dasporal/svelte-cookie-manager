@@ -109,7 +109,7 @@
 			{detailedConsent} />
 	{:else if displayType === 'banner'}
 		<div
-			class={`fixed bottom-4 left-1/2 w-full -translate-x-1/2 md:max-w-2xl ${theme === 'light' ? 'border border-black/10 bg-white/95 shadow-lg' : 'bg-black/95 ring-1 ring-white/10'} 
+			class={`fixed bottom-4 left-1/2 w-full -translate-x-1/2 md:max-w-2xl ${theme === 'light' ? 'border border-black/10 bg-white/95 shadow-lg' : 'bg-black/50 text-white ring-1 ring-white/10'} 
 		z-[99999] rounded-lg backdrop-blur-sm backdrop-saturate-150 transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] hover:-translate-y-2
 		${isExiting ? 'translate-y-full transform opacity-0' : isEntering ? 'translate-y-full transform opacity-0' : 'translate-y-0 transform opacity-100'}`}>
 			<BannerContent
@@ -129,7 +129,7 @@
 	{:else if displayType === 'popup'}
 		<div
 			class={`fixed bottom-4 left-4 w-80
-             ${theme === 'light' ? 'bg-white/95 shadow-lg ring-1 ring-black/10' : 'bg-black/95 ring-1 ring-white/10'}
+             ${theme === 'light' ? 'bg-white/95 shadow-lg ring-1 ring-black/10' : 'bg-black/50 text-white ring-1 ring-white/10'}
              z-[99999] rounded-lg backdrop-blur-sm 
              backdrop-saturate-150 transition-all duration-500
              ease-[cubic-bezier(0.32,0.72,0,1)] hover:-translate-y-2
@@ -151,7 +151,7 @@
 	{:else}
 		<div
 			class={`fixed inset-0 flex items-center justify-center p-4
-             ${theme === 'light' ? 'bg-black/20 backdrop-blur-sm' : 'bg-black/40 backdrop-blur-sm'}
+             ${theme === 'light' ? 'bg-black/20 backdrop-blur-sm' : 'bg-black/40 text-white backdrop-blur-sm'}
              z-[99999] transition-all duration-500
              ease-[cubic-bezier(0.32,0.72,0,1)]
              ${isExiting ? 'opacity-0' : isEntering ? 'opacity-0' : 'opacity-100'}`}>

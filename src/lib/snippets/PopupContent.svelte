@@ -26,77 +26,65 @@
 		handleDeclineClick: () => void;
 		handleAcceptClick: () => void;
 	} = $props();
-
-	const titleClasses = $derived(
-		`
-  text-sm font-semibold mb-2
-  ${theme === 'light' ? 'text-gray-900' : 'text-white'}`.trim()
-	);
-
-	const messageClasses = $derived(
-		`
-  text-xs font-medium
-  ${theme === 'light' ? 'text-gray-700' : 'text-gray-200'}
-`.trim()
-	);
-
-	const privacyLinkClasses = $derived(
-		`
-  text-xs font-medium
-  ${theme === 'light' ? 'text-gray-500 hover:text-gray-700' : 'text-gray-400 hover:text-gray-200'}
-  transition-colors duration-200
-`.trim()
-	);
-
-	const manageButtonClasses = `
-  px-3 py-1.5 text-xs font-medium rounded-md
-  border border-blue-500 text-blue-500
-  bg-transparent w-full justify-center
-  hover:text-blue-600 hover:border-blue-600
-  transition-all duration-200
-  hover:scale-105 focus-visible:outline-none focus:outline-none
-  focus-visible:outline-transparent focus:outline-transparent
-`.trim();
-
-	const declineButtonClasses = $derived(
-		`
-  px-3 py-1.5 text-xs font-medium rounded-md flex-1
-  ${theme === 'light' ? 'bg-gray-200 hover:bg-gray-300 text-gray-800' : 'bg-gray-800 hover:bg-gray-700 text-gray-300'}
-  transition-all duration-200
-  hover:scale-105 focus-visible:outline-none focus:outline-none
-  focus-visible:outline-transparent focus:outline-transparent
-`.trim()
-	);
-
-	const acceptButtonClasses = `
-  px-3 py-1.5 text-xs font-medium rounded-md flex-1
-  bg-blue-500 hover:bg-blue-600 text-white
-  transition-all duration-200
-  hover:scale-105 focus-visible:outline-none focus:outline-none
-  focus-visible:outline-transparent focus:outline-transparent
-`.trim();
 </script>
 
 <div class="flex flex-col items-start gap-4 p-4">
 	<div class="flex flex-col">
 		{#if title}
-			<p class={titleClasses}>{title}</p>
+			<p
+				class={`
+  mb-2 text-sm font-semibold
+  ${theme === 'light' ? 'text-gray-900' : 'text-white'}`}>
+				{title}
+			</p>
 		{/if}
-		<p class={messageClasses}>{message}</p>
+		<p
+			class={`
+  text-xs font-medium
+  ${theme === 'light' ? 'text-gray-700' : 'text-gray-200'}
+`}>
+			{message}
+		</p>
 	</div>
 
 	<div class="flex w-full flex-col gap-3">
 		<div class="flex items-center gap-3">
-			<button onclick={handleDeclineClick} class={declineButtonClasses}>
+			<button
+				onclick={handleDeclineClick}
+				class={`
+  flex-1 rounded-md px-3 py-1.5 text-xs font-medium
+  ${theme === 'light' ? 'bg-gray-200 hover:bg-gray-300 text-gray-800' : 'bg-gray-800 hover:bg-gray-700 text-gray-300'}
+  transition-all duration-200
+  hover:scale-105 focus:outline-none focus:outline-transparent
+  focus-visible:outline-none focus-visible:outline-transparent
+`}>
 				{declineButtonText}
 			</button>
-			<button onclick={handleAcceptClick} class={acceptButtonClasses}>
+			<button
+				onclick={handleAcceptClick}
+				class={`
+  flex-1 rounded-md bg-blue-500 px-3 py-1.5 text-xs
+  font-medium text-white transition-all
+  duration-200 hover:scale-105
+  hover:bg-blue-600 focus:outline-none focus:outline-transparent
+  focus-visible:outline-none focus-visible:outline-transparent
+`}>
 				{buttonText}
 			</button>
 		</div>
 		<div class="flex w-full flex-col gap-2">
 			{#if showManageButton}
-				<button onclick={handleManageClick} class={manageButtonClasses}>
+				<button
+					onclick={handleManageClick}
+					class={`
+  w-full justify-center rounded-md border border-blue-500
+  bg-transparent px-3 py-1.5
+  text-xs font-medium text-blue-500
+  transition-all duration-200
+  hover:scale-105 hover:border-blue-600
+  hover:text-blue-600 focus:outline-none focus:outline-transparent
+  focus-visible:outline-none focus-visible:outline-transparent
+`}>
 					{manageButtonText}
 				</button>
 			{/if}
@@ -105,8 +93,11 @@
 					href={privacyPolicyUrl}
 					target="_blank"
 					rel="noopener noreferrer"
-					class={privacyLinkClasses}
-				>
+					class={`
+  text-xs font-medium
+  ${theme === 'light' ? 'text-gray-500 hover:text-gray-700' : 'text-gray-400 hover:text-gray-200'}
+  transition-colors duration-200
+`}>
 					{privacyPolicyText}
 				</a>
 			{/if}
