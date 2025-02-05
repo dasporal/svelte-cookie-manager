@@ -1,4 +1,4 @@
-import { browser } from '$app/environment';
+import { BROWSER } from 'esm-env';
 import type { DetailedCookieConsent } from '$lib/types.js';
 
 export const storedConsent = (() => {
@@ -18,7 +18,7 @@ export const storedConsent = (() => {
 	}
 
 	function loadStoredConsent() {
-		if (!browser) return null;
+		if (!BROWSER) return null;
 		const item = localStorage.getItem('cookie-consent');
 		return item ? (JSON.parse(item) as DetailedCookieConsent) : null;
 	}
@@ -121,7 +121,7 @@ export const displayManage = (() => {
 
 export const themeStore = (() => {
 	let theme: 'light' | 'dark' = $state(
-		browser ? (localStorage.getItem('cookie-theme') ?? 'dark') : 'dark'
+		BROWSER ? (localStorage.getItem('cookie-theme') ?? 'dark') : 'dark'
 	);
 
 	return {
@@ -130,13 +130,13 @@ export const themeStore = (() => {
 		},
 		set value(newTheme: 'light' | 'dark') {
 			theme = newTheme;
-			if (browser) {
+			if (BROWSER) {
 				localStorage.setItem('cookie-theme', newTheme);
 			}
 		},
 		toggle() {
 			theme = theme === 'light' ? 'dark' : 'light';
-			if (browser) {
+			if (BROWSER) {
 				localStorage.setItem('cookie-theme', theme);
 			}
 		}
