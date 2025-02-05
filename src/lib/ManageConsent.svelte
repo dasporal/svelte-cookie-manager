@@ -1,16 +1,18 @@
 <script lang="ts">
 	import RenderConsentStatus from './snippets/RenderConsentStatus.svelte';
-	import { type CookieCategories } from './types.js';
+	import { type CookieCategories, type DetailedCookieConsent } from './types.js';
 	import { storedConsent, themeStore } from './utils/cookie.svelte.js';
 
 	interface ManageConsentProps {
-		onSave: (categories: CookieCategories) => void;
+		onSave: (categories: DetailedCookieConsent) => void;
 		onCancel?: () => void;
 	}
 
 	let { onSave, onCancel }: ManageConsentProps = $props();
 
 	function handleToggle(category: keyof CookieCategories) {
+		if (!storedConsent.value) return;
+
 		storedConsent.updateDetailedConsent({
 			...storedConsent.value,
 			[category]: {
@@ -61,7 +63,7 @@
 				<label class="relative inline-flex cursor-pointer items-center">
 					<input
 						type="checkbox"
-						bind:checked={storedConsent.value.Analytics.consented}
+						bind:checked={storedConsent.simplifiedConsent!.Analytics}
 						onclick={() => handleToggle('Analytics')}
 						class="peer sr-only" />
 					<div
@@ -84,7 +86,7 @@
 				<label class="relative inline-flex cursor-pointer items-center">
 					<input
 						type="checkbox"
-						bind:checked={storedConsent.value.Social.consented}
+						bind:checked={storedConsent.simplifiedConsent!.Social}
 						onclick={() => handleToggle('Social')}
 						class="peer sr-only" />
 					<div
@@ -109,7 +111,7 @@
 				<label class="relative inline-flex cursor-pointer items-center">
 					<input
 						type="checkbox"
-						bind:checked={storedConsent.value.Advertising.consented}
+						bind:checked={storedConsent.simplifiedConsent!.Advertising}
 						onclick={() => handleToggle('Advertising')}
 						class="peer sr-only" />
 					<div
@@ -129,7 +131,7 @@
 			{/if}
 
 			<button
-				onclick={() => onSave(storedConsent.value)}
+				onclick={() => (storedConsent.value ? onSave(storedConsent.value) : null)}
 				class="flex-1 rounded-md bg-blue-500 px-3 py-1.5 text-xs font-medium text-white transition-all duration-200 hover:scale-105 hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2">
 				Save Preferences
 			</button>

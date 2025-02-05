@@ -7,12 +7,12 @@
 		blockTrackingScripts,
 		restoreOriginalRequests
 	} from './utils/tracking.js';
-	import type { CookieManagerProps } from './types.js';
+	import type { CookieManagerProps, DetailedCookieConsent } from './types.js';
 	import { onMount } from 'svelte';
 	import { displayTypeStore, isVisible, storedConsent, themeStore } from './utils/cookie.svelte.js';
 
 	let showManageConsent = $state(false);
-	let observer = $state(null);
+	let observer: MutationObserver | null = $state(null);
 
 	let {
 		title,
@@ -28,8 +28,8 @@
 	}: CookieManagerProps = $props();
 
 	function handleTrackingBlocking() {
-		const blockedHosts = [...getBlockedHosts(storedConsent.value), ...[]]; // Add custom blocked domains if needed
-		const blockedKeywords = [...getBlockedKeywords(storedConsent.value), ...[]];
+		const blockedHosts = [...getBlockedHosts(storedConsent.simplifiedConsent), ...[]]; // Add custom blocked domains if needed
+		const blockedKeywords = [...getBlockedKeywords(storedConsent.simplifiedConsent), ...[]];
 
 		if (blockedHosts.length > 0) {
 			blockTrackingRequests(blockedHosts);
@@ -40,7 +40,7 @@
 		}
 	}
 
-	function updateDetailedConsent(preferences) {
+	function updateDetailedConsent(preferences: DetailedCookieConsent) {
 		storedConsent.updateDetailedConsent(preferences);
 
 		showManageConsent = false;

@@ -1,5 +1,5 @@
 import { BROWSER } from 'esm-env';
-import type { DetailedCookieConsent } from '$lib/types.js';
+import type { CookieCategories, DetailedCookieConsent } from '$lib/types.js';
 
 export const storedConsent = (() => {
 	let cookieConsent = $state({
@@ -30,6 +30,15 @@ export const storedConsent = (() => {
 		getCookieConsent() {
 			return cookieConsent;
 		},
+		get simplifiedConsent(): CookieCategories | null {
+			if (!cookieConsent.detailedConsent) return null;
+
+			return {
+				Analytics: cookieConsent.detailedConsent.Analytics.consented,
+				Social: cookieConsent.detailedConsent.Social.consented,
+				Advertising: cookieConsent.detailedConsent.Advertising.consented
+			};
+		},
 		showConsentBanner() {
 			cookieConsent.hasConsent = null;
 		},
@@ -51,7 +60,7 @@ export const storedConsent = (() => {
 				detailedConsent: newConsent
 			};
 		},
-		updateDetailedConsent(preferences) {
+		updateDetailedConsent(preferences: DetailedCookieConsent) {
 			const newConsent = {
 				Analytics: {
 					consented: preferences.Analytics.consented,
@@ -122,7 +131,7 @@ export const displayManage = (() => {
 export const themeStore = (() => {
 	let theme: 'light' | 'dark' = $state(
 		BROWSER ? (localStorage.getItem('cookie-theme') ?? 'dark') : 'dark'
-	);
+	) as 'light' | 'dark';
 
 	return {
 		get value(): 'light' | 'dark' {

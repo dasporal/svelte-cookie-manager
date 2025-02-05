@@ -6,5 +6,4 @@ Svelte Library inspired by Hypership's [React Cookie Manager](https://github.com
 
 # Known issues
 
-- Styles aren't properly packaged
-- Utils aren't exactly up-to Svelte 5 standards
+- Cancel button not working
