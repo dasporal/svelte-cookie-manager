@@ -9,6 +9,7 @@
 	let isVisible = $state(false);
 	let currentConsent = $state(getCurrentConsent());
 	let theme = $state(getTheme());
+	let emoji = $derived(theme === 'light' ? '🌙' : '☀️');
 
 	function showConsentBanner() {
 		isVisible = true;
@@ -111,7 +112,7 @@
 			<button
 				class="cursor-pointer bg-transparent px-4 py-2 text-sm text-white"
 				onclick={toggleTheme}>
-				🌙
+				{emoji}
 			</button>
 		</div>
 	</div>

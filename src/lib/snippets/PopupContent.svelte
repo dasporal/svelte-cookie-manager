@@ -1,4 +1,8 @@
 <script lang="ts">
+	import AcceptButton from '$lib/buttons/AcceptButton.svelte';
+	import DeclineButton from '$lib/buttons/DeclineButton.svelte';
+	import ManageButton from '$lib/buttons/ManageButton.svelte';
+
 	let {
 		title,
 		message,
@@ -32,62 +36,29 @@
 	<div class="flex flex-col">
 		{#if title}
 			<p
-				class={`
-  mb-2 text-sm font-semibold
-  ${theme === 'light' ? 'text-gray-900' : 'text-white'}`}>
+				class={`mb-2 text-sm font-semibold ${theme === 'light' ? 'text-slate-900' : 'text-white'}`}>
 				{title}
 			</p>
 		{/if}
 		<p
 			class={`
   text-xs font-medium
-  ${theme === 'light' ? 'text-gray-700' : 'text-gray-200'}
+  ${theme === 'light' ? 'text-slate-700' : 'text-slate-200'}
 `}>
 			{message}
 		</p>
 	</div>
 
 	<div class="flex w-full flex-col gap-3">
-		<div class="flex items-center gap-3">
-			<button
-				onclick={handleDeclineClick}
-				class={`
-  flex-1 rounded-md px-3 py-1.5 text-xs font-medium
-  ${theme === 'light' ? 'bg-gray-200 hover:bg-gray-300 text-gray-800' : 'bg-gray-800 hover:bg-gray-700 text-gray-300'}
-  transition-all duration-200
-  hover:scale-105 focus:outline-none focus:outline-transparent
-  focus-visible:outline-none focus-visible:outline-transparent
-`}>
-				{declineButtonText}
-			</button>
-			<button
-				onclick={handleAcceptClick}
-				class={`
-  flex-1 rounded-md bg-blue-500 px-3 py-1.5 text-xs
-  font-medium text-white transition-all
-  duration-200 hover:scale-105
-  hover:bg-blue-600 focus:outline-none focus:outline-transparent
-  focus-visible:outline-none focus-visible:outline-transparent
-`}>
-				{buttonText}
-			</button>
+		<div class="flex w-full items-center gap-3">
+			<DeclineButton {declineButtonText} {handleDeclineClick} {theme} displayType="popup" />
+			<AcceptButton {buttonText} {handleAcceptClick} />
 		</div>
 		<div class="flex w-full flex-col gap-2">
 			{#if showManageButton}
-				<button
-					onclick={handleManageClick}
-					class={`
-  w-full justify-center rounded-md border border-blue-500
-  bg-transparent px-3 py-1.5
-  text-xs font-medium text-blue-500
-  transition-all duration-200
-  hover:scale-105 hover:border-blue-600
-  hover:text-blue-600 focus:outline-none focus:outline-transparent
-  focus-visible:outline-none focus-visible:outline-transparent
-`}>
-					{manageButtonText}
-				</button>
+				<ManageButton {handleManageClick} {manageButtonText} />
 			{/if}
+
 			{#if privacyPolicyUrl}
 				<a
 					href={privacyPolicyUrl}
@@ -95,7 +66,7 @@
 					rel="noopener noreferrer"
 					class={`
   text-xs font-medium
-  ${theme === 'light' ? 'text-gray-500 hover:text-gray-700' : 'text-gray-400 hover:text-gray-200'}
+  ${theme === 'light' ? 'text-slate-500 hover:text-slate-700' : 'text-slate-400 hover:text-slate-200'}
   transition-colors duration-200
 `}>
 					{privacyPolicyText}
