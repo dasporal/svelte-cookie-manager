@@ -74,7 +74,7 @@ export const storedConsent = (() => {
 	};
 })();
 
-export const displayType = (() => {
+export const displayTypeStore = (() => {
 	let displayType: 'popup' | 'banner' | 'modal' = $state('popup');
 
 	return {
@@ -119,7 +119,7 @@ export const displayManage = (() => {
 	};
 })();
 
-export const theme = (() => {
+export const themeStore = (() => {
 	let theme: 'light' | 'dark' = $state(
 		browser ? (localStorage.getItem('cookie-theme') ?? 'dark') : 'dark'
 	);

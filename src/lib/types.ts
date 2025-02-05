@@ -16,16 +16,16 @@ export interface DetailedCookieConsent {
 }
 
 export interface CookieManagerProps {
-	title: string;
-	message: string;
-	buttonText: string;
-	declineButtonText: string;
-	showManageButton: boolean;
-	manageButtonText: string;
-	privacyPolicyUrl: string;
-	privacyPolicyText: string;
-	theme: 'light' | 'dark';
-	displayType: 'popup' | 'banner' | 'modal';
+	title?: string;
+	message?: string;
+	buttonText?: string;
+	declineButtonText?: string;
+	showManageButton?: boolean;
+	manageButtonText?: string;
+	privacyPolicyUrl?: string;
+	privacyPolicyText?: string;
+	theme?: 'light' | 'dark';
+	displayType?: 'popup' | 'banner' | 'modal';
 }
 
 export interface CookieConsenterProps {

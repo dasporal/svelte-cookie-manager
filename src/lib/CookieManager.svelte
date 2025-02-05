@@ -9,7 +9,7 @@
 	} from './utils/tracking.js';
 	import type { CookieManagerProps } from './types.js';
 	import { onMount } from 'svelte';
-	import { isVisible, storedConsent } from './utils/cookie.svelte.js';
+	import { displayTypeStore, isVisible, storedConsent, themeStore } from './utils/cookie.svelte.js';
 
 	let showManageConsent = $state(false);
 	let observer = $state(null);
@@ -23,7 +23,7 @@
 		manageButtonText,
 		privacyPolicyUrl,
 		privacyPolicyText,
-		theme,
+		theme = themeStore.value,
 		displayType
 	}: CookieManagerProps = $props();
 
@@ -67,10 +67,18 @@
 		storedConsent.declineCookies();
 	}
 
+	$effect(() => {
+		if (themeStore.value) theme = themeStore.value;
+		if (displayTypeStore.value) displayType = displayTypeStore.value;
+	});
+
 	onMount(() => {
 		if (storedConsent.value === null && !showManageConsent) {
 			isVisible.value = true;
 		}
+
+		if (theme) themeStore.value = theme;
+		if (displayType) displayTypeStore.value = displayType;
 
 		handleTrackingBlocking();
 

@@ -32,19 +32,15 @@
 	} = $props();
 </script>
 
-<div class="flex flex-col gap-4 p-4">
+<div class="flex flex-col gap-4 p-4" class:dark={theme === 'dark'}>
 	<div>
 		{#if title}
-			<p
-				class={`mb-1 text-sm font-semibold ${theme === 'light' ? 'text-slate-900' : 'text-white'}`}>
+			<p class="mb-1 text-sm font-semibold text-slate-900 dark:text-white">
 				{title}
 			</p>
 		{/if}
 		<p
-			class={`
-    text-center text-xs font-medium sm:text-left sm:text-sm
-    ${theme === 'light' ? 'text-slate-700' : 'text-slate-200'}
-  `}>
+			class="text-center text-xs font-medium text-slate-700 sm:text-left sm:text-sm dark:text-slate-200">
 			{message}
 		</p>
 	</div>
@@ -54,10 +50,7 @@
 				href={privacyPolicyUrl}
 				target="_blank"
 				rel="noopener noreferrer"
-				class={`
-					text-xs font-medium
-					${theme === 'light' ? 'text-slate-500 hover:text-slate-700' : 'text-slate-400 hover:text-slate-200'}
-					transition-colors duration-200`}>
+				class="text-xs font-medium text-slate-500 transition-colors duration-200 hover:text-slate-700 dark:text-slate-400 dark:hover:text-slate-200">
 				{privacyPolicyText}
 			</a>
 		{/if}

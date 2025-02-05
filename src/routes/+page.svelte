@@ -1,7 +1,12 @@
 <script lang="ts">
-	import { displayType, storedConsent, isVisible, theme } from '$lib/utils/cookie.svelte.js';
+	import {
+		displayTypeStore,
+		storedConsent,
+		isVisible,
+		themeStore
+	} from '$lib/utils/cookie.svelte.js';
 
-	let emoji = $derived(theme.value === 'light' ? '🌙' : '☀️');
+	let emoji = $derived(themeStore.value === 'light' ? '🌙' : '☀️');
 </script>
 
 <svelte:head>
@@ -62,23 +67,32 @@
 		<h3 class="mb-2 text-center">Change Cookie Manager Display Type</h3>
 		<div class="mx-auto flex w-fit rounded-lg border border-light bg-slate-800 p-1">
 			<button
-				onclick={() => (displayType.value = 'popup')}
+				onclick={() => {
+					displayTypeStore.value = 'popup';
+					isVisible.value = true;
+				}}
 				class="cursor-pointer border-r border-slate-700 bg-transparent px-4 py-2 text-sm text-white">
 				Popup
 			</button>
 			<button
-				onclick={() => (displayType.value = 'modal')}
+				onclick={() => {
+					displayTypeStore.value = 'modal';
+					isVisible.value = true;
+				}}
 				class="cursor-pointer border-r border-slate-700 bg-transparent px-4 py-2 text-sm text-white">
 				Modal
 			</button>
 			<button
-				onclick={() => (displayType.value = 'banner')}
+				onclick={() => {
+					displayTypeStore.value = 'banner';
+					isVisible.value = true;
+				}}
 				class="cursor-pointer border-r border-slate-700 bg-transparent px-4 py-2 text-sm text-white">
 				Banner
 			</button>
 			<button
 				class="cursor-pointer bg-transparent px-4 py-2 text-sm text-white"
-				onclick={theme.toggle}>
+				onclick={themeStore.toggle}>
 				{emoji}
 			</button>
 		</div>

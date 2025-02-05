@@ -1,6 +1,6 @@
 <script lang="ts">
 	import CookieManager from '$lib/CookieManager.svelte';
-	import { isVisible, theme, displayType } from '$lib/utils/cookie.svelte.js';
+	import { isVisible, themeStore, displayTypeStore } from '$lib/utils/cookie.svelte.js';
 	import '$lib/styles.css';
 
 	let { children } = $props();
@@ -15,7 +15,6 @@
 	manageButtonText="Manage Cookies"
 	privacyPolicyUrl="https://example.com/privacy"
 	privacyPolicyText="Privacy Policy"
-	theme={theme.value}
-	displayType={displayType.value} />
+	displayType="banner" />
 
 {@render children()}
