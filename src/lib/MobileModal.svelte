@@ -52,12 +52,7 @@
 				{theme === 'light' ? 'bg-white/95 ring-1 ring-black/10' : 'bg-black/95 ring-1 ring-white/10'}
 				rounded-2xl backdrop-blur-sm backdrop-saturate-150">
 		{#if isManaging}
-			<ManageConsent
-				{theme}
-				onSave={handleSavePreferences}
-				onCancel={handleCancelManage}
-				{initialPreferences}
-				{detailedConsent} />
+			<ManageConsent onSave={handleSavePreferences} onCancel={handleCancelManage} />
 		{:else}
 			<div class="flex flex-col gap-3">
 				{#if title}

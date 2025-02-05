@@ -7,21 +7,21 @@ export default {
 	theme: {
 		extend: {
 			colors: {
-				dark: '#0f172a',
-				cardstart: '#111827',
-				cardend: '#080d17',
-				light: '#f1f5f9',
-				gray: '#9ca3af',
-				accent: '#d8b4fe',
-				purple: '#a78bfa',
-				accentred: '#ef4444',
-				accentamber: '#f59e0b',
-				accentgreen: '#10b981',
-				borderlight: 'rgba(135, 152, 181, 0.227)',
-				gradienttop: 'rgba(218, 128, 240, 0.647)',
-				gradientbottom: 'rgba(99, 102, 241, 0.6)',
-				backgroundcolor: '#1e293b',
-				backgroundhovercolor: '#334155'
+				dark: 'var(--dark)',
+				cardstart: 'var(--cardstart)',
+				cardend: 'var(--cardend)',
+				light: 'var(--light)',
+				gray: 'var(--gray)',
+				accent: 'var(--accent)',
+				purple: 'var(--purple)',
+				accentred: 'var(--accentred)',
+				accentamber: 'var(--accentamber)',
+				accentgreen: 'var(--accentgreen)',
+				borderlight: 'var(--borderlight)',
+				gradienttop: 'var(--gradienttop)',
+				gradientbottom: 'var(--gradientbottom)',
+				backgroundcolor: 'var(--backgroundcolor)',
+				backgroundhovercolor: 'var(--backgroundhovercolor)'
 			}
 		}
 	},

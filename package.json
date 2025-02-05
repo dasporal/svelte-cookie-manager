@@ -22,12 +22,14 @@
 	],
 	"svelte": "./dist/index.js",
 	"types": "./dist/index.d.ts",
+	"style": "./dist/style.css",
 	"type": "module",
 	"exports": {
 		".": {
 			"types": "./dist/index.d.ts",
-			"svelte": "./dist/index.js"
-		}
+			"default": "./dist/index.js"
+		},
+		"./styles.css": "./dist/styles.css"
 	},
 	"peerDependencies": {
 		"svelte": "^5.0.0"

@@ -40,7 +40,7 @@
 			</p>
 		{/if}
 		<p
-			class="text-center text-xs font-medium text-slate-700 sm:text-left sm:text-sm dark:text-slate-200">
+			class="text-center text-xs font-medium text-slate-700 dark:text-slate-200 sm:text-left sm:text-sm">
 			{message}
 		</p>
 	</div>

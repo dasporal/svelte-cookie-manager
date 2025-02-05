@@ -1,4 +1,5 @@
 <script lang="ts">
+	import './styles.css';
 	import CookieConsenter from './CookieConsenter.svelte';
 	import ManageConsent from './ManageConsent.svelte';
 	import { getBlockedHosts, getBlockedKeywords } from './utils/tracker-utils.js';

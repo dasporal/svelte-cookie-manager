@@ -10,7 +10,7 @@
 </script>
 
 <svelte:head>
-	<title>Hypership Inspired Svelte Template</title>
+	<title>Hypership Inspired Svelte Cookie Manager</title>
 </svelte:head>
 
 <div
@@ -19,7 +19,8 @@
 	<div class="scale-200 my-8 flex items-center justify-center">
 		<div class="animate-bounce text-4xl">🍪</div>
 	</div>
-
+	<a href="https://react-cookie-manager.hypership.dev/" class="hover:text-slate-200 hover:underline"
+		>From an original idea of Hypership</a>
 	<div class="my-8 text-center">
 		<code
 			class="text-slate inline-block overflow-hidden rounded-lg border border-blue-300 bg-slate-800 px-8 py-4 font-mono text-lg tracking-wide shadow-md backdrop-blur transition duration-300">

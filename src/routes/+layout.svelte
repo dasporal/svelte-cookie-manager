@@ -1,7 +1,5 @@
 <script lang="ts">
 	import CookieManager from '$lib/CookieManager.svelte';
-	import { isVisible, themeStore, displayTypeStore } from '$lib/utils/cookie.svelte.js';
-	import '$lib/styles.css';
 
 	let { children } = $props();
 </script>
