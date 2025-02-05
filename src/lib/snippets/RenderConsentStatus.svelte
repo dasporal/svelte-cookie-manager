@@ -18,5 +18,5 @@
 </script>
 
 <p class={`mt-1 text-xs ${theme === 'light' ? 'text-slate-500' : 'text-slate-500'}`}>
-	Status: {status.consented ? 'Consented' : 'Declined'} on {formatDate(status.timestamp)}
+	{status.consented ? 'Consented' : 'Declined'} on {formatDate(status.timestamp)}
 </p>

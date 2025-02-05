@@ -55,10 +55,9 @@
 				target="_blank"
 				rel="noopener noreferrer"
 				class={`
-    text-xs font-medium
-    ${theme === 'light' ? 'text-slate-500 hover:text-slate-700' : 'text-slate-400 hover:text-slate-200'}
-    transition-colors duration-200
-  `}>
+					text-xs font-medium
+					${theme === 'light' ? 'text-slate-500 hover:text-slate-700' : 'text-slate-400 hover:text-slate-200'}
+					transition-colors duration-200`}>
 				{privacyPolicyText}
 			</a>
 		{/if}

@@ -25,7 +25,6 @@ export interface CookieManagerProps {
 	privacyPolicyUrl: string;
 	privacyPolicyText: string;
 	theme: 'light' | 'dark';
-	isVisible: boolean;
 	displayType: 'popup' | 'banner' | 'modal';
 }
 

@@ -1,5 +1,4 @@
 <script lang="ts">
-	import { acceptCookies, declineCookies } from './store.svelte';
 	import CookieConsenter from './CookieConsenter.svelte';
 	import ManageConsent from './ManageConsent.svelte';
 	import { getBlockedHosts, getBlockedKeywords } from './utils/tracker-utils.js';
@@ -10,11 +9,10 @@
 	} from './utils/tracking.js';
 	import type { CookieManagerProps } from './types.js';
 	import { onMount } from 'svelte';
+	import { isVisible, storedConsent } from './utils/cookie.svelte.js';
 
 	let showManageConsent = $state(false);
 	let observer = $state(null);
-	let detailedConsent = $state(null);
-	let hasConsent = $state(false);
 
 	let {
 		title,
@@ -26,13 +24,12 @@
 		privacyPolicyUrl,
 		privacyPolicyText,
 		theme,
-		displayType,
-		isVisible = $bindable()
+		displayType
 	}: CookieManagerProps = $props();
 
 	function handleTrackingBlocking() {
-		const blockedHosts = [...getBlockedHosts(detailedConsent), ...[]]; // Add custom blocked domains if needed
-		const blockedKeywords = [...getBlockedKeywords(detailedConsent), ...[]];
+		const blockedHosts = [...getBlockedHosts(storedConsent.value), ...[]]; // Add custom blocked domains if needed
+		const blockedKeywords = [...getBlockedKeywords(storedConsent.value), ...[]];
 
 		if (blockedHosts.length > 0) {
 			blockTrackingRequests(blockedHosts);
@@ -44,50 +41,35 @@
 	}
 
 	function updateDetailedConsent(preferences) {
-		const newConsent = {
-			Analytics: { consented: preferences.Analytics, timestamp: new Date().toISOString() },
-			Social: { consented: preferences.Social, timestamp: new Date().toISOString() },
-			Advertising: { consented: preferences.Advertising, timestamp: new Date().toISOString() }
-		};
-		localStorage.setItem('cookie-consent', JSON.stringify(newConsent));
-		detailedConsent = newConsent;
+		storedConsent.updateDetailedConsent(preferences);
 
 		showManageConsent = false;
 		handleTrackingBlocking();
 	}
 
 	function handleManage() {
-		isVisible = false;
+		isVisible.value = false;
 		showManageConsent = true;
 	}
 
 	function handleCancelManage() {
-		isVisible = true;
+		isVisible.value = true;
 		showManageConsent = false;
 	}
 
 	function acceptCookiesFromManager() {
-		isVisible = false;
-		acceptCookies();
+		isVisible.value = false;
+		storedConsent.acceptCookies();
 	}
 
 	function declineCookiesFromManager() {
-		isVisible = false;
-		declineCookies();
+		isVisible.value = false;
+		storedConsent.declineCookies();
 	}
 
 	onMount(() => {
-		const storedConsent = localStorage.getItem('cookie-consent');
-		if (storedConsent) {
-			detailedConsent = JSON.parse(storedConsent);
-		}
-
-		hasConsent = detailedConsent
-			? Object.values(detailedConsent).some((status) => status.consented)
-			: null;
-
-		if (detailedConsent === null && !showManageConsent) {
-			isVisible = true;
+		if (storedConsent.value === null && !showManageConsent) {
+			isVisible.value = true;
 		}
 
 		handleTrackingBlocking();
@@ -98,7 +80,7 @@
 	});
 </script>
 
-{#if isVisible}
+{#if isVisible.value}
 	<CookieConsenter
 		{title}
 		{message}
@@ -112,33 +94,20 @@
 		{displayType}
 		onAccept={acceptCookiesFromManager}
 		onDecline={declineCookiesFromManager}
-		onManage={handleManage}
-		{detailedConsent} />
+		onManage={handleManage} />
 {/if}
 
 {#if showManageConsent}
-	<div class="overlay">
-		<div class="modal">
-			<ManageConsent
-				onSave={updateDetailedConsent}
-				onCancel={handleCancelManage}
-				{detailedConsent} />
+	<div
+		class="fixed inset-0 z-[99999] flex items-center justify-center bg-black/40 p-4 backdrop-blur-sm">
+		<div
+			class={`w-full max-w-lg rounded-xl p-6 ${theme === 'light' ? 'bg-white/95 ring-1 ring-black/10' : 'bg-black/95 ring-1 ring-white/10'}`}>
+			<ManageConsent onSave={updateDetailedConsent} onCancel={handleCancelManage} />
 		</div>
 	</div>
 {/if}
 
 <style>
-	.overlay {
-		position: fixed;
-		inset: 0;
-		z-index: 99999;
-		background: rgba(0, 0, 0, 0.4);
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		backdrop-filter: blur(5px);
-	}
-
 	.modal {
 		width: 100%;
 		max-width: 500px;
