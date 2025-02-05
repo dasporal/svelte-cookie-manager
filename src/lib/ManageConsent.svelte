@@ -27,6 +27,8 @@
 	function handleToggle(category: keyof CookieCategories) {
 		consent = { ...consent, [category]: !consent[category] };
 	}
+
+	$inspect(consent);
 </script>
 
 <div class="flex flex-col gap-6">
@@ -78,7 +80,7 @@
 				<input
 					type="checkbox"
 					bind:checked={consent.Analytics}
-					onchange={() => handleToggle('Analytics')}
+					onclick={() => handleToggle('Analytics')}
 					class="peer sr-only" />
 
 				<div
@@ -108,7 +110,7 @@
 				<input
 					type="checkbox"
 					bind:checked={consent.Social}
-					onchange={() => handleToggle('Social')}
+					onclick={() => handleToggle('Social')}
 					class="peer sr-only" />
 				<div
 					class={`peer h-6 w-11 rounded-full peer-focus:ring-2 peer-focus:ring-blue-500 
@@ -141,7 +143,7 @@
 				<input
 					type="checkbox"
 					bind:checked={consent.Advertising}
-					onchange={() => handleToggle('Advertising')}
+					onclick={() => handleToggle('Advertising')}
 					class="peer sr-only" />
 				<div
 					class={`peer h-6 w-11 rounded-full peer-focus:ring-2 peer-focus:ring-blue-500 
