@@ -1,12 +1,12 @@
 {
 	"name": "svelte-cookie-manager",
-	"version": "0.9.0",
+	"version": "0.9.1",
 	"author": "dasporal",
 	"license": "MIT",
 	"description": "🍪 The ultimate Svelte cookie consent solution. Automatically block trackers, manage consent preferences, and protect user privacy with an elegant UI. Perfect for modern web applications.",
 	"repository": {
 		"type": "git",
-		"url": "https://github.com/dasporal/svelte-cookie-manager.git"
+		"url": "git+https://github.com/dasporal/svelte-cookie-manager.git"
 	},
 	"bugs": {
 		"url": "https://github.com/dasporal/svelte-cookie-manager/issues"

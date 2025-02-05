@@ -10,16 +10,18 @@
 
 	let { onSave, onCancel }: ManageConsentProps = $props();
 
-	function handleToggle(category: keyof CookieCategories) {
-		if (!storedConsent.value) return;
+	let consent: DetailedCookieConsent | null = $state(storedConsent.value);
 
-		storedConsent.updateDetailedConsent({
-			...storedConsent.value,
+	function handleToggle(category: keyof CookieCategories) {
+		if (!consent) return;
+
+		consent = {
+			...consent,
 			[category]: {
-				...storedConsent.value[category],
-				consented: !storedConsent.value[category].consented
+				...consent[category],
+				consented: !consent[category].consented
 			}
-		});
+		};
 	}
 </script>
 
@@ -131,7 +133,7 @@
 			{/if}
 
 			<button
-				onclick={() => (storedConsent.value ? onSave(storedConsent.value) : null)}
+				onclick={() => (consent ? onSave(consent) : null)}
 				class="flex-1 rounded-md bg-blue-500 px-3 py-1.5 text-xs font-medium text-white transition-all duration-200 hover:scale-105 hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2">
 				Save Preferences
 			</button>

@@ -9,7 +9,7 @@
 		isExiting: boolean;
 		isEntering: boolean;
 		isManaging: boolean;
-		handleSavePreferences: (categories: CookieCategories) => void;
+		handleSavePreferences: (categories: DetailedCookieConsent) => void;
 		handleCancelManage: () => void;
 		initialPreferences?: CookieCategories;
 		detailedConsent?: DetailedCookieConsent | null;
