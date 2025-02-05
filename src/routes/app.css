@@ -1,3 +1,23 @@
 @import 'tailwindcss/base';
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
+
+@layer base {
+	:root {
+		--dark: #0f172a;
+		--cardstart: #111827;
+		--cardend: #080d17;
+		--light: #f1f5f9;
+		--gray: #9ca3af;
+		--accent: #d8b4fe;
+		--purple: #a78bfa;
+		--accentred: #ef4444;
+		--accentamber: #f59e0b;
+		--accentgreen: #10b981;
+		--borderlight: rgba(135, 152, 181, 0.227);
+		--gradienttop: rgba(218, 128, 240, 0.647);
+		--gradientbottom: rgba(99, 102, 241, 0.6);
+		--backgroundcolor: #1e293b;
+		--backgroundhovercolor: #334155;
+	}
+}

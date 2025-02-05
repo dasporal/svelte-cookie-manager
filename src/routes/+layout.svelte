@@ -1,6 +1,6 @@
 <script lang="ts">
+	import './app.css';
 	import CookieManager from '$lib/CookieManager.svelte';
-
 	let { children } = $props();
 </script>
 
