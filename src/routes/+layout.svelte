@@ -13,6 +13,7 @@
 	manageButtonText="Manage Cookies"
 	privacyPolicyUrl="https://example.com/privacy"
 	privacyPolicyText="Privacy Policy"
-	displayType="banner" />
+	displayType="banner"
+	theme="dark" />
 
 {@render children()}

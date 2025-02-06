@@ -9,22 +9,27 @@
 	} from './utils/tracking.js';
 	import type { CookieManagerProps, DetailedCookieConsent } from './types.js';
 	import { onMount } from 'svelte';
-	import { displayTypeStore, isVisible, storedConsent, themeStore } from './utils/cookie.svelte.js';
+	import {
+		displayManage,
+		displayTypeStore,
+		isVisible,
+		storedConsent,
+		themeStore
+	} from './utils/cookie.svelte.js';
 
-	let showManageConsent = $state(false);
 	let observer: MutationObserver | null = $state(null);
 
 	let {
-		title,
-		message,
-		buttonText,
-		declineButtonText,
-		showManageButton,
-		manageButtonText,
-		privacyPolicyUrl,
-		privacyPolicyText,
+		title = '',
+		message = 'This website uses cookies to enhance your experience.',
+		buttonText = 'Accept',
+		declineButtonText = 'Decline',
+		showManageButton = true,
+		manageButtonText = 'Manage Cookies',
+		privacyPolicyUrl = '',
+		privacyPolicyText = 'Privacy Policy',
 		theme = themeStore.value,
-		displayType
+		displayType = 'banner'
 	}: CookieManagerProps = $props();
 
 	function handleTrackingBlocking() {
@@ -43,18 +48,18 @@
 	function updateDetailedConsent(preferences: DetailedCookieConsent) {
 		storedConsent.updateDetailedConsent(preferences);
 
-		showManageConsent = false;
+		displayManage.value = false;
 		handleTrackingBlocking();
 	}
 
 	function handleManage() {
 		isVisible.value = false;
-		showManageConsent = true;
+		displayManage.value = true;
 	}
 
 	function handleCancelManage() {
 		isVisible.value = true;
-		showManageConsent = false;
+		displayManage.value = false;
 	}
 
 	function acceptCookiesFromManager() {
@@ -73,8 +78,20 @@
 	});
 
 	onMount(() => {
-		if (storedConsent.value === null && !showManageConsent) {
+		if (storedConsent.value === null && !displayManage.value) {
 			isVisible.value = true;
+
+			storedConsent.updateDetailedConsent({
+				Analytics: {
+					consented: false,
+					timestamp: new Date().toISOString()
+				},
+				Social: { consented: false, timestamp: new Date().toISOString() },
+				Advertising: {
+					consented: false,
+					timestamp: new Date().toISOString()
+				}
+			});
 		}
 
 		if (theme) themeStore.value = theme;
@@ -105,7 +122,7 @@
 		onManage={handleManage} />
 {/if}
 
-{#if showManageConsent}
+{#if displayManage.value}
 	<div
 		class="scm-fixed scm-inset-0 scm-z-[99999] scm-flex scm-items-center scm-justify-center scm-bg-black/40 scm-p-4 scm-backdrop-blur-sm">
 		<div

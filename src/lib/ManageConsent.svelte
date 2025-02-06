@@ -1,4 +1,5 @@
 <script lang="ts">
+	import ConsentCategory from './snippets/ConsentCategory.svelte';
 	import RenderConsentStatus from './snippets/RenderConsentStatus.svelte';
 	import { type CookieCategories, type DetailedCookieConsent } from './types.js';
 	import { storedConsent, themeStore } from './utils/cookie.svelte.js';
@@ -10,10 +11,13 @@
 
 	let { onSave, onCancel }: ManageConsentProps = $props();
 
-	let consent: DetailedCookieConsent | null = $state(storedConsent.value);
+	let consent: DetailedCookieConsent = $state(storedConsent.value);
+
+	$inspect(consent);
 
 	function handleToggle(category: keyof CookieCategories) {
 		if (!consent) return;
+		console.log('handling', category);
 
 		consent = {
 			...consent,
@@ -55,80 +59,9 @@
 				</div>
 			</div>
 
-			<!-- Analytics Cookies -->
-			<div class="scm-flex scm-items-center scm-justify-between">
-				<div>
-					<h4 class="scm-text-xs scm-font-medium scm-text-slate-900 dark:scm-text-white">
-						Analytics
-					</h4>
-					<p class="scm-text-xs scm-text-slate-600 dark:scm-text-slate-400">
-						Help us understand how visitors interact with our website
-					</p>
-					{#if storedConsent.value && storedConsent.value.Analytics}
-						<RenderConsentStatus theme={themeStore.value} status={storedConsent.value.Analytics} />
-					{/if}
-				</div>
-				<label class="scm-relative scm-inline-flex scm-cursor-pointer scm-items-center">
-					<input
-						type="checkbox"
-						bind:checked={storedConsent.simplifiedConsent!.Analytics}
-						onclick={() => handleToggle('Analytics')}
-						class="scm-peer scm-sr-only" />
-					<div
-						class="scm-peer scm-h-6 scm-w-11 scm-rounded-full scm-bg-slate-200 after:scm-absolute after:scm-left-[2px] after:scm-top-0.5 after:scm-h-5 after:scm-w-5 after:scm-rounded-full after:scm-bg-white after:scm-transition-all after:scm-content-[''] peer-checked:scm-bg-blue-500 peer-checked:after:scm-translate-x-full peer-focus:scm-ring-2 peer-focus:scm-ring-blue-500 dark:scm-bg-slate-700">
-					</div>
-				</label>
-			</div>
-
-			<!-- Social -->
-			<div class="scm-flex scm-items-center scm-justify-between">
-				<div>
-					<h4 class="scm-text-xs scm-font-medium scm-text-slate-900 dark:scm-text-white">Social</h4>
-					<p class="scm-text-xs scm-text-slate-600 dark:scm-text-slate-400">
-						Enable social media features and sharing
-					</p>
-					{#if storedConsent.value && storedConsent.value.Social}
-						<RenderConsentStatus theme={themeStore.value} status={storedConsent.value.Social} />
-					{/if}
-				</div>
-				<label class="scm-relative scm-inline-flex scm-cursor-pointer scm-items-center">
-					<input
-						type="checkbox"
-						bind:checked={storedConsent.simplifiedConsent!.Social}
-						onclick={() => handleToggle('Social')}
-						class="scm-peer scm-sr-only" />
-					<div
-						class="scm-peer scm-h-6 scm-w-11 scm-rounded-full scm-bg-slate-200 after:scm-absolute after:scm-left-[2px] after:scm-top-0.5 after:scm-h-5 after:scm-w-5 after:scm-rounded-full after:scm-bg-white after:scm-transition-all after:scm-content-[''] peer-checked:scm-bg-blue-500 peer-checked:after:scm-translate-x-full peer-focus:scm-ring-2 peer-focus:scm-ring-blue-500 dark:scm-bg-slate-700">
-					</div>
-				</label>
-			</div>
-
-			<!-- Advertising -->
-			<div class="scm-flex scm-items-center scm-justify-between">
-				<div>
-					<h4 class="scm-text-xs scm-font-medium scm-text-slate-900 dark:scm-text-white">
-						Advertising
-					</h4>
-					<p class="scm-text-xs scm-text-slate-600 dark:scm-text-slate-400">
-						Personalize advertisements and measure their performance
-					</p>
-					{#if storedConsent.value && storedConsent.value.Advertising}
-						<RenderConsentStatus
-							theme={themeStore.value}
-							status={storedConsent.value.Advertising} />
-					{/if}
-				</div>
-				<label class="scm-relative scm-inline-flex scm-cursor-pointer scm-items-center">
-					<input
-						type="checkbox"
-						bind:checked={storedConsent.simplifiedConsent!.Advertising}
-						onclick={() => handleToggle('Advertising')}
-						class="scm-peer scm-sr-only" />
-					<div
-						class="scm-peer scm-h-6 scm-w-11 scm-rounded-full scm-bg-slate-200 after:scm-absolute after:scm-left-[2px] after:scm-top-0.5 after:scm-h-5 after:scm-w-5 after:scm-rounded-full after:scm-bg-white after:scm-transition-all after:scm-content-[''] peer-checked:scm-bg-blue-500 peer-checked:after:scm-translate-x-full peer-focus:scm-ring-2 peer-focus:scm-ring-blue-500 dark:scm-bg-slate-700">
-					</div>
-				</label>
-			</div>
+			<ConsentCategory consentCategory={consent.Analytics} label="Analytics" {handleToggle} />
+			<ConsentCategory consentCategory={consent.Social} label="Social" {handleToggle} />
+			<ConsentCategory consentCategory={consent.Advertising} label="Advertising" {handleToggle} />
 		</div>
 
 		<div class="scm-mt-2 scm-flex scm-gap-3">

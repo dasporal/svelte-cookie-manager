@@ -8,24 +8,20 @@
 	let isMobile = $derived.by(() => window.innerWidth < 640);
 
 	let {
-		buttonText = 'Accept',
-		declineButtonText = 'Decline',
-		manageButtonText = 'Manage Cookies',
-		showManageButton = false,
-		privacyPolicyText = 'Privacy Policy',
-		privacyPolicyUrl = '',
-		title = '',
-		message = 'This website uses cookies to enhance your experience.',
-		displayType = 'banner',
-		theme = 'light',
+		buttonText,
+		declineButtonText,
+		manageButtonText,
+		showManageButton,
+		privacyPolicyText,
+		privacyPolicyUrl,
+		title,
+		message,
+		displayType,
+		theme,
 		onAccept,
 		onDecline,
 		onManage,
-		initialPreferences = {
-			Analytics: false,
-			Social: false,
-			Advertising: false
-		},
+		initialPreferences,
 		detailedConsent,
 		isManaging = false
 	}: CookieConsenterProps = $props();
@@ -109,7 +105,7 @@
 			{detailedConsent} />
 	{:else if displayType === 'banner'}
 		<div
-			class={`scm-fixed scm-bottom-4 scm-left-1/2 scm-w-1/2 -scm-translate-x-1/2 md:max-w-2xl ${theme === 'light' ? 'scm-border scm-border-black/10 scm-bg-white/95 scm-shadow-lg' : 'scm-bg-black/90 scm-text-white scm-ring-1 scm-ring-white/10'} 
+			class={`md:max-w-2xl scm-fixed scm-bottom-4 scm-left-1/2 scm-w-1/2 -scm-translate-x-1/2 ${theme === 'light' ? 'scm-border scm-border-black/10 scm-bg-white/95 scm-shadow-lg' : 'scm-bg-black/90 scm-text-white scm-ring-1 scm-ring-white/10'} 
 		scm-z-[99999] scm-rounded-lg scm-backdrop-blur-sm scm-backdrop-saturate-150 scm-transition-all scm-duration-500 scm-ease-[cubic-bezier(0.32,0.72,0,1)] hover:scm--translate-y-2
 		${isExiting ? 'scm-translate-y-full scm-transform scm-opacity-0' : isEntering ? 'scm-translate-y-full scm-transform scm-opacity-0' : 'scm-translate-y-0 scm-transform scm-opacity-100'}`}>
 			<BannerContent

@@ -130,7 +130,7 @@ export const displayManage = (() => {
 
 export const themeStore = (() => {
 	let theme: 'light' | 'dark' = $state(
-		BROWSER ? (localStorage.getItem('cookie-theme') ?? 'dark') : 'dark'
+		BROWSER ? (localStorage.getItem('cookie-theme') ?? 'light') : null
 	) as 'light' | 'dark';
 
 	return {
