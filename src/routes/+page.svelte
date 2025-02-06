@@ -14,16 +14,18 @@
 </svelte:head>
 
 <div
-	class="flex min-h-screen w-full flex-col items-center justify-center gap-6 bg-dark p-4 text-center text-light">
-	<h1 class="text-4xl font-bold text-slate-100">Svelte Cookie Manager</h1>
-	<div class="scale-200 my-8 flex items-center justify-center">
-		<div class="animate-bounce text-4xl">🍪</div>
+	class="scm-flex scm-min-h-screen scm-w-full scm-flex-col scm-items-center scm-justify-center scm-gap-6 scm-bg-slate-950 scm-p-4 scm-text-center scm-text-light">
+	<h1 class="scm-text-4xl scm-font-bold scm-text-slate-100">Svelte Cookie Manager</h1>
+	<div class="scm-scale-200 scm-my-8 scm-flex scm-items-center scm-justify-center">
+		<div class="scm-animate-bounce scm-text-4xl">🍪</div>
 	</div>
-	<a href="https://react-cookie-manager.hypership.dev/" class="hover:text-slate-200 hover:underline"
+	<a
+		href="https://react-cookie-manager.hypership.dev/"
+		class="hover:scm-text-slate-200 scm-text-white hover:scm-underline"
 		>From an original idea of Hypership</a>
-	<div class="my-8 text-center">
+	<div class="scm-my-8 scm-text-center">
 		<code
-			class="text-slate inline-block overflow-hidden rounded-lg border border-blue-300 bg-slate-800 px-8 py-4 font-mono text-lg tracking-wide shadow-md backdrop-blur transition duration-300">
+			class="scm-text-white scm-inline-block scm-overflow-hidden scm-rounded-lg scm-border scm-border-blue-300 scm-bg-slate-800 scm-px-8 scm-py-4 scm-font-mono scm-text-lg scm-tracking-wide scm-shadow-md scm-backdrop-blur scm-transition scm-duration-300">
 			$ npm i svelte-cookie-manager
 		</code>
 	</div>
@@ -31,48 +33,44 @@
 	<div>
 		<button
 			onclick={isVisible.toggle}
-			class="mb-5 cursor-pointer rounded-md bg-blue-500 px-5 py-2 text-lg text-white transition hover:bg-blue-600">
+			class="scm-mb-5 scm-cursor-pointer scm-rounded-md scm-bg-blue-500 scm-px-5 scm-py-2 scm-text-lg scm-text-white scm-transition hover:scm-bg-blue-600">
 			Show Cookie Consent
 		</button>
-		<div class="flex flex-col gap-4 rounded-lg border border-slate-700 bg-slate-800 p-5">
-			<div class="flex items-center justify-between gap-5">
-				<span class="w-24 font-bold text-white">Analytics:</span>
+		<div
+			class="scm-flex scm-flex-col scm-gap-4 scm-rounded-lg scm-border scm-border-slate-700 scm-bg-slate-800 scm-p-5">
+			<div class="scm-flex scm-items-center scm-justify-between scm-gap-5">
+				<span class="scm-w-24 scm-font-bold scm-text-white">Analytics:</span>
 				<span
-					class="w-16 font-medium {storedConsent.value?.Analytics?.consented
-						? 'text-green-400'
-						: 'text-red-400'}">
+					class={`scm-w-16 scm-font-medium ${storedConsent.value?.Analytics?.consented ? 'scm-text-green-400' : 'scm-text-red-400'} `}>
 					{storedConsent.hasConsentFor('Analytics') ? 'Enabled' : 'Disabled'}
 				</span>
 			</div>
-			<div class="flex items-center justify-between gap-5">
-				<span class="w-24 font-bold text-white">Social:</span>
+			<div class="scm-flex scm-items-center scm-justify-between scm-gap-5">
+				<span class="scm-w-24 scm-font-bold scm-text-white">Social:</span>
 				<span
-					class="w-16 font-medium {storedConsent.value?.Social?.consented
-						? 'text-green-400'
-						: 'text-red-400'}">
+					class={`scm-w-16 scm-font-medium ${storedConsent.value?.Social?.consented ? 'scm-text-green-400' : 'scm-text-red-400'} `}>
 					{storedConsent.hasConsentFor('Social') ? 'Enabled' : 'Disabled'}
 				</span>
 			</div>
-			<div class="flex items-center justify-between gap-5">
-				<span class="w-24 font-bold text-white">Advertising:</span>
+			<div class="scm-flex scm-items-center scm-justify-between scm-gap-5">
+				<span class="scm-w-24 scm-font-bold scm-text-white">Advertising:</span>
 				<span
-					class="w-16 font-medium {storedConsent.value?.Advertising?.consented
-						? 'text-green-400'
-						: 'text-red-400'}">
+					class={`scm-w-16 scm-font-medium ${storedConsent.value?.Advertising?.consented ? 'scm-text-green-400' : 'scm-text-red-400'} `}>
 					{storedConsent.hasConsentFor('Advertising') ? 'Enabled' : 'Disabled'}
 				</span>
 			</div>
 		</div>
 	</div>
-	<div class="my-5 flex flex-col items-center">
-		<h3 class="mb-2 text-center">Change Cookie Manager Display Type</h3>
-		<div class="mx-auto flex w-fit rounded-lg border border-light bg-slate-800 p-1">
+	<div class="scm-my-5 scm-flex scm-flex-col scm-items-center">
+		<h3 class="scm-mb-2 scm-text-center">Change Cookie Manager Display Type</h3>
+		<div
+			class="scm-mx-auto scm-flex scm-w-fit scm-rounded-lg scm-border scm-border-light scm-bg-slate-800 scm-p-1">
 			<button
 				onclick={() => {
 					displayTypeStore.value = 'popup';
 					isVisible.value = true;
 				}}
-				class="cursor-pointer border-r border-slate-700 bg-transparent px-4 py-2 text-sm text-white">
+				class="scm-cursor-pointer scm-border-r scm-border-slate-700 scm-bg-transparent scm-px-4 scm-py-2 scm-text-sm scm-text-white">
 				Popup
 			</button>
 			<button
@@ -80,7 +78,7 @@
 					displayTypeStore.value = 'modal';
 					isVisible.value = true;
 				}}
-				class="cursor-pointer border-r border-slate-700 bg-transparent px-4 py-2 text-sm text-white">
+				class="scm-cursor-pointer scm-border-r scm-border-slate-700 scm-bg-transparent scm-px-4 scm-py-2 scm-text-sm scm-text-white">
 				Modal
 			</button>
 			<button
@@ -88,11 +86,11 @@
 					displayTypeStore.value = 'banner';
 					isVisible.value = true;
 				}}
-				class="cursor-pointer border-r border-slate-700 bg-transparent px-4 py-2 text-sm text-white">
+				class="scm-cursor-pointer scm-border-r scm-border-slate-700 scm-bg-transparent scm-px-4 scm-py-2 scm-text-sm scm-text-white">
 				Banner
 			</button>
 			<button
-				class="cursor-pointer bg-transparent px-4 py-2 text-sm text-white"
+				class="scm-cursor-pointer scm-bg-transparent scm-px-4 scm-py-2 scm-text-sm scm-text-white"
 				onclick={themeStore.toggle}>
 				{emoji}
 			</button>

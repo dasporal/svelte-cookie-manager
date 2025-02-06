@@ -26,82 +26,90 @@
 </script>
 
 <div class={themeStore.value === 'dark' ? 'dark' : ''}>
-	<div class="flex flex-col gap-6">
+	<div class="scm-flex scm-flex-col scm-gap-6">
 		<div>
-			<h3 class="mb-2 text-sm font-semibold text-slate-900 dark:text-white">Cookie Preferences</h3>
-			<p class="text-xs text-slate-700 dark:text-slate-200">
+			<h3 class="scm-mb-2 scm-text-sm scm-font-semibold scm-text-slate-900 dark:scm-text-white">
+				Cookie Preferences
+			</h3>
+			<p class="scm-text-xs scm-text-slate-700 dark:scm-text-slate-200">
 				Manage your cookie preferences below. Essential cookies are always enabled as they are
 				necessary for the website to function properly.
 			</p>
 		</div>
 
-		<div class="flex flex-col gap-4">
+		<div class="scm-flex scm-flex-col scm-gap-4">
 			<!-- Essential Cookies - Always enabled -->
-			<div class="flex items-center justify-between">
+			<div class="scm-flex scm-items-center scm-justify-between">
 				<div>
-					<h4 class="text-xs font-medium text-slate-900 dark:text-white">Essential</h4>
-					<p class="text-xs text-slate-600 dark:text-slate-400">
+					<h4 class="scm-text-xs scm-font-medium scm-text-slate-900 dark:scm-text-white">
+						Essential
+					</h4>
+					<p class="scm-text-xs scm-text-slate-600 dark:scm-text-slate-400">
 						Required for the website to function properly
 					</p>
-					<p class="mt-1 text-xs text-slate-500">Status: Always enabled</p>
+					<p class="scm-mt-1 scm-text-xs scm-text-slate-500">Status: Always enabled</p>
 				</div>
 				<div
-					class="rounded-full bg-slate-200 px-3 py-1 text-center text-xs font-medium text-slate-600 dark:bg-slate-800 dark:text-slate-300">
+					class="scm-rounded-full scm-bg-slate-200 scm-px-3 scm-py-1 scm-text-center scm-text-xs scm-font-medium scm-text-slate-600 dark:scm-bg-slate-800 dark:scm-text-slate-300">
 					Always On
 				</div>
 			</div>
 
 			<!-- Analytics Cookies -->
-			<div class="flex items-center justify-between">
+			<div class="scm-flex scm-items-center scm-justify-between">
 				<div>
-					<h4 class="text-xs font-medium text-slate-900 dark:text-white">Analytics</h4>
-					<p class="text-xs text-slate-600 dark:text-slate-400">
+					<h4 class="scm-text-xs scm-font-medium scm-text-slate-900 dark:scm-text-white">
+						Analytics
+					</h4>
+					<p class="scm-text-xs scm-text-slate-600 dark:scm-text-slate-400">
 						Help us understand how visitors interact with our website
 					</p>
 					{#if storedConsent.value && storedConsent.value.Analytics}
 						<RenderConsentStatus theme={themeStore.value} status={storedConsent.value.Analytics} />
 					{/if}
 				</div>
-				<label class="relative inline-flex cursor-pointer items-center">
+				<label class="scm-relative scm-inline-flex scm-cursor-pointer scm-items-center">
 					<input
 						type="checkbox"
 						bind:checked={storedConsent.simplifiedConsent!.Analytics}
 						onclick={() => handleToggle('Analytics')}
-						class="peer sr-only" />
+						class="scm-peer scm-sr-only" />
 					<div
-						class="peer h-6 w-11 rounded-full bg-slate-200 after:absolute after:left-[2px] after:top-0.5 after:h-5 after:w-5 after:rounded-full after:bg-white after:transition-all after:content-[''] peer-checked:bg-blue-500 peer-checked:after:translate-x-full peer-focus:ring-2 peer-focus:ring-blue-500 dark:bg-slate-700">
+						class="scm-peer scm-h-6 scm-w-11 scm-rounded-full scm-bg-slate-200 after:scm-absolute after:scm-left-[2px] after:scm-top-0.5 after:scm-h-5 after:scm-w-5 after:scm-rounded-full after:scm-bg-white after:scm-transition-all after:scm-content-[''] peer-checked:scm-bg-blue-500 peer-checked:after:scm-translate-x-full peer-focus:scm-ring-2 peer-focus:scm-ring-blue-500 dark:scm-bg-slate-700">
 					</div>
 				</label>
 			</div>
 
 			<!-- Social -->
-			<div class="flex items-center justify-between">
+			<div class="scm-flex scm-items-center scm-justify-between">
 				<div>
-					<h4 class="text-xs font-medium text-slate-900 dark:text-white">Social</h4>
-					<p class="text-xs text-slate-600 dark:text-slate-400">
+					<h4 class="scm-text-xs scm-font-medium scm-text-slate-900 dark:scm-text-white">Social</h4>
+					<p class="scm-text-xs scm-text-slate-600 dark:scm-text-slate-400">
 						Enable social media features and sharing
 					</p>
 					{#if storedConsent.value && storedConsent.value.Social}
 						<RenderConsentStatus theme={themeStore.value} status={storedConsent.value.Social} />
 					{/if}
 				</div>
-				<label class="relative inline-flex cursor-pointer items-center">
+				<label class="scm-relative scm-inline-flex scm-cursor-pointer scm-items-center">
 					<input
 						type="checkbox"
 						bind:checked={storedConsent.simplifiedConsent!.Social}
 						onclick={() => handleToggle('Social')}
-						class="peer sr-only" />
+						class="scm-peer scm-sr-only" />
 					<div
-						class="peer h-6 w-11 rounded-full bg-slate-200 after:absolute after:left-[2px] after:top-0.5 after:h-5 after:w-5 after:rounded-full after:bg-white after:transition-all after:content-[''] peer-checked:bg-blue-500 peer-checked:after:translate-x-full peer-focus:ring-2 peer-focus:ring-blue-500 dark:bg-slate-700">
+						class="scm-peer scm-h-6 scm-w-11 scm-rounded-full scm-bg-slate-200 after:scm-absolute after:scm-left-[2px] after:scm-top-0.5 after:scm-h-5 after:scm-w-5 after:scm-rounded-full after:scm-bg-white after:scm-transition-all after:scm-content-[''] peer-checked:scm-bg-blue-500 peer-checked:after:scm-translate-x-full peer-focus:scm-ring-2 peer-focus:scm-ring-blue-500 dark:scm-bg-slate-700">
 					</div>
 				</label>
 			</div>
 
 			<!-- Advertising -->
-			<div class="flex items-center justify-between">
+			<div class="scm-flex scm-items-center scm-justify-between">
 				<div>
-					<h4 class="text-xs font-medium text-slate-900 dark:text-white">Advertising</h4>
-					<p class="text-xs text-slate-600 dark:text-slate-400">
+					<h4 class="scm-text-xs scm-font-medium scm-text-slate-900 dark:scm-text-white">
+						Advertising
+					</h4>
+					<p class="scm-text-xs scm-text-slate-600 dark:scm-text-slate-400">
 						Personalize advertisements and measure their performance
 					</p>
 					{#if storedConsent.value && storedConsent.value.Advertising}
@@ -110,31 +118,31 @@
 							status={storedConsent.value.Advertising} />
 					{/if}
 				</div>
-				<label class="relative inline-flex cursor-pointer items-center">
+				<label class="scm-relative scm-inline-flex scm-cursor-pointer scm-items-center">
 					<input
 						type="checkbox"
 						bind:checked={storedConsent.simplifiedConsent!.Advertising}
 						onclick={() => handleToggle('Advertising')}
-						class="peer sr-only" />
+						class="scm-peer scm-sr-only" />
 					<div
-						class="peer h-6 w-11 rounded-full bg-slate-200 after:absolute after:left-[2px] after:top-0.5 after:h-5 after:w-5 after:rounded-full after:bg-white after:transition-all after:content-[''] peer-checked:bg-blue-500 peer-checked:after:translate-x-full peer-focus:ring-2 peer-focus:ring-blue-500 dark:bg-slate-700">
+						class="scm-peer scm-h-6 scm-w-11 scm-rounded-full scm-bg-slate-200 after:scm-absolute after:scm-left-[2px] after:scm-top-0.5 after:scm-h-5 after:scm-w-5 after:scm-rounded-full after:scm-bg-white after:scm-transition-all after:scm-content-[''] peer-checked:scm-bg-blue-500 peer-checked:after:scm-translate-x-full peer-focus:scm-ring-2 peer-focus:scm-ring-blue-500 dark:scm-bg-slate-700">
 					</div>
 				</label>
 			</div>
 		</div>
 
-		<div class="mt-2 flex gap-3">
+		<div class="scm-mt-2 scm-flex scm-gap-3">
 			{#if onCancel}
 				<button
 					onclick={onCancel}
-					class="flex-1 rounded-md bg-slate-200 px-3 py-1.5 text-xs font-medium text-slate-800 transition-all duration-200 hover:scale-105 hover:bg-slate-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 dark:bg-slate-800 dark:text-slate-300 dark:hover:bg-slate-700">
+					class="scm-focus:outline-none scm-focus:ring-2 scm-focus:ring-blue-500 scm-focus:ring-offset-2 scm-flex-1 scm-rounded-md scm-bg-slate-200 scm-px-3 scm-py-1.5 scm-text-xs scm-font-medium scm-text-slate-800 scm-transition-all scm-duration-200 hover:scm-scale-105 hover:scm-bg-slate-300 dark:scm-bg-slate-800 dark:scm-text-slate-300 dark:hover:scm-bg-slate-700">
 					Cancel
 				</button>
 			{/if}
 
 			<button
 				onclick={() => (consent ? onSave(consent) : null)}
-				class="flex-1 rounded-md bg-blue-500 px-3 py-1.5 text-xs font-medium text-white transition-all duration-200 hover:scale-105 hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2">
+				class="scm-focus:outline-none scm-focus:ring-2 scm-focus:ring-blue-500 scm-focus:ring-offset-2 scm-flex-1 scm-rounded-md scm-bg-blue-500 scm-px-3 scm-py-1.5 scm-text-xs scm-font-medium scm-text-white scm-transition-all scm-duration-200 hover:scm-scale-105 hover:scm-bg-blue-600">
 				Save Preferences
 			</button>
 		</div>

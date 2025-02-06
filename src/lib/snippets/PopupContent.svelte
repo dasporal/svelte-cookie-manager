@@ -32,29 +32,26 @@
 	} = $props();
 </script>
 
-<div class="flex flex-col items-start gap-4 p-4">
-	<div class="flex flex-col">
+<div class="scm-flex scm-flex-col scm-items-start scm-gap-4 scm-p-4">
+	<div class="scm-flex scm-flex-col">
 		{#if title}
 			<p
-				class={`mb-2 text-sm font-semibold ${theme === 'light' ? 'text-slate-900' : 'text-white'}`}>
+				class={`scm-mb-2 scm-text-sm scm-font-semibold ${theme === 'light' ? 'scm-text-slate-900' : 'scm-text-white'}`}>
 				{title}
 			</p>
 		{/if}
 		<p
-			class={`
-  text-xs font-medium
-  ${theme === 'light' ? 'text-slate-700' : 'text-slate-200'}
-`}>
+			class={`scm-text-xs scm-font-medium ${theme === 'light' ? 'scm-text-slate-700' : 'scm-text-slate-200'}`}>
 			{message}
 		</p>
 	</div>
 
-	<div class="flex w-full flex-col gap-3">
-		<div class="flex w-full items-center gap-3">
+	<div class="scm-flex scm-w-full scm-flex-col scm-gap-3">
+		<div class="scm-flex scm-w-full scm-items-center scm-gap-3">
 			<DeclineButton {declineButtonText} {handleDeclineClick} {theme} displayType="popup" />
 			<AcceptButton {buttonText} {handleAcceptClick} />
 		</div>
-		<div class="flex w-full flex-col gap-2">
+		<div class="scm-flex scm-w-full scm-flex-col scm-gap-2">
 			{#if showManageButton}
 				<ManageButton {handleManageClick} {manageButtonText} />
 			{/if}
@@ -65,9 +62,9 @@
 					target="_blank"
 					rel="noopener noreferrer"
 					class={`
-  text-xs font-medium
-  ${theme === 'light' ? 'text-slate-500 hover:text-slate-700' : 'text-slate-400 hover:text-slate-200'}
-  transition-colors duration-200
+  scm-text-xs scm-font-medium
+  ${theme === 'light' ? 'scm-text-slate-500 hover:scm-text-slate-700' : 'scm-text-slate-400 hover:scm-text-slate-200'}
+  scm-transition-colors scm-duration-200
 `}>
 					{privacyPolicyText}
 				</a>

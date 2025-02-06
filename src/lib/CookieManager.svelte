@@ -107,9 +107,9 @@
 
 {#if showManageConsent}
 	<div
-		class="fixed inset-0 z-[99999] flex items-center justify-center bg-black/40 p-4 backdrop-blur-sm">
+		class="scm-fixed scm-inset-0 scm-z-[99999] scm-flex scm-items-center scm-justify-center scm-bg-black/40 scm-p-4 scm-backdrop-blur-sm">
 		<div
-			class={`w-full max-w-lg rounded-xl p-6 ${theme === 'light' ? 'bg-white/95 ring-1 ring-black/10' : 'bg-black/95 ring-1 ring-white/10'}`}>
+			class={`scm-w-full scm-max-w-lg scm-rounded-xl scm-p-6 ${theme === 'light' ? 'scm-bg-white/95 scm-ring-1 scm-ring-black/10' : 'scm-bg-black/95 scm-ring-1 scm-ring-white/10'}`}>
 			<ManageConsent onSave={updateDetailedConsent} onCancel={handleCancelManage} />
 		</div>
 	</div>

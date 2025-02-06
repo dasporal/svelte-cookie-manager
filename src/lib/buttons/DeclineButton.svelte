@@ -15,12 +15,12 @@
 <button
 	onclick={handleDeclineClick}
 	class={`
-    rounded-md px-3 py-1.5 text-xs font-medium
-    ${theme === 'light' ? 'bg-slate-200 text-slate-800 hover:bg-slate-300' : 'bg-slate-800 text-slate-300 hover:bg-slate-700'}
-    transition-all duration-200
-    hover:scale-105 focus:outline-none focus:outline-transparent
-    focus-visible:outline-none focus-visible:outline-transparent
-    ${displayType === 'popup' ? 'flex-1' : ''}
+    scm-rounded-md scm-px-3 scm-py-1.5 scm-text-xs scm-font-medium
+    ${theme === 'light' ? 'scm-bg-slate-200 scm-text-slate-800 hover:scm-bg-slate-300' : 'scm-bg-slate-800 scm-text-slate-300 hover:scm-bg-slate-700'}
+    scm-focus:outline-none scm-focus:outline-transparent
+    scm-focus-visible:outline-none scm-focus-visible:outline-transparent scm-transition-all
+    scm-duration-200 hover:scm-scale-105
+    ${displayType === 'popup' ? 'scm-flex-1' : ''}
   `}>
 	{declineButtonText}
 </button>

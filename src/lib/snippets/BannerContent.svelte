@@ -32,29 +32,30 @@
 	} = $props();
 </script>
 
-<div class="flex flex-col gap-4 p-4" class:dark={theme === 'dark'}>
+<div
+	class={`scm-flex scm-flex-col scm-gap-4 scm-p-4 ${theme === 'light' ? 'scm-light' : 'scm-dark'}`}>
 	<div>
 		{#if title}
-			<p class="mb-1 text-sm font-semibold text-slate-900 dark:text-white">
+			<p class="scm-mb-1 scm-text-sm scm-font-semibold scm-text-slate-900 dark:scm-text-white">
 				{title}
 			</p>
 		{/if}
 		<p
-			class="text-center text-xs font-medium text-slate-700 dark:text-slate-200 sm:text-left sm:text-sm">
+			class="scm-text-center scm-text-xs scm-font-medium scm-text-slate-700 dark:scm-text-slate-200 sm:scm-text-left sm:scm-text-sm">
 			{message}
 		</p>
 	</div>
-	<div class="flex w-full items-center justify-between">
+	<div class="scm-flex scm-w-full scm-items-center scm-justify-between">
 		{#if privacyPolicyUrl}
 			<a
 				href={privacyPolicyUrl}
 				target="_blank"
 				rel="noopener noreferrer"
-				class="text-xs font-medium text-slate-500 transition-colors duration-200 hover:text-slate-700 dark:text-slate-400 dark:hover:text-slate-200">
+				class="scm-text-xs scm-font-medium scm-text-slate-500 scm-transition-colors scm-duration-200 hover:scm-text-slate-700 dark:scm-text-slate-400 dark:hover:scm-text-slate-200">
 				{privacyPolicyText}
 			</a>
 		{/if}
-		<div class="flex items-center gap-3">
+		<div class="scm-flex scm-items-center scm-gap-3">
 			{#if showManageButton}
 				<ManageButton {handleManageClick} {manageButtonText} />
 			{/if}

@@ -17,6 +17,7 @@
 	};
 </script>
 
-<p class={`mt-1 text-xs ${theme === 'light' ? 'text-slate-500' : 'text-slate-500'}`}>
+<p
+	class={`scm-mt-1 scm-text-xs ${theme === 'light' ? 'scm-text-slate-500' : 'scm-text-slate-500'}`}>
 	{status.consented ? 'Consented' : 'Declined'} on {formatDate(status.timestamp)}
 </p>
