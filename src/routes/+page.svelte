@@ -14,18 +14,18 @@
 </svelte:head>
 
 <div
-	class="scm-flex scm-min-h-screen scm-w-full scm-flex-col scm-items-center scm-justify-center scm-gap-6 scm-bg-slate-950 scm-p-4 scm-text-center scm-text-light">
+	class="scm-text-light scm-flex scm-min-h-screen scm-w-full scm-flex-col scm-items-center scm-justify-center scm-gap-6 scm-bg-slate-950 scm-p-4 scm-text-center">
 	<h1 class="scm-text-4xl scm-font-bold scm-text-slate-100">Svelte Cookie Manager</h1>
 	<div class="scm-scale-200 scm-my-8 scm-flex scm-items-center scm-justify-center">
 		<div class="scm-animate-bounce scm-text-4xl">🍪</div>
 	</div>
 	<a
 		href="https://react-cookie-manager.hypership.dev/"
-		class="hover:scm-text-slate-200 scm-text-white hover:scm-underline"
+		class="scm-text-white hover:scm-text-slate-200 hover:scm-underline"
 		>From an original idea of Hypership</a>
 	<div class="scm-my-8 scm-text-center">
 		<code
-			class="scm-text-white scm-inline-block scm-overflow-hidden scm-rounded-lg scm-border scm-border-blue-300 scm-bg-slate-800 scm-px-8 scm-py-4 scm-font-mono scm-text-lg scm-tracking-wide scm-shadow-md scm-backdrop-blur scm-transition scm-duration-300">
+			class="scm-inline-block scm-overflow-hidden scm-rounded-lg scm-border scm-border-blue-300 scm-bg-slate-800 scm-px-8 scm-py-4 scm-font-mono scm-text-lg scm-tracking-wide scm-text-white scm-shadow-md scm-backdrop-blur scm-transition scm-duration-300">
 			$ npm i svelte-cookie-manager
 		</code>
 	</div>
@@ -64,7 +64,7 @@
 	<div class="scm-my-5 scm-flex scm-flex-col scm-items-center">
 		<h3 class="scm-mb-2 scm-text-center">Change Cookie Manager Display Type</h3>
 		<div
-			class="scm-mx-auto scm-flex scm-w-fit scm-rounded-lg scm-border scm-border-light scm-bg-slate-800 scm-p-1">
+			class="scm-border-light scm-mx-auto scm-flex scm-w-fit scm-rounded-lg scm-border scm-bg-slate-800 scm-p-1">
 			<button
 				onclick={() => {
 					displayTypeStore.value = 'popup';
@@ -96,4 +96,7 @@
 			</button>
 		</div>
 	</div>
+	<a
+		href="https://github.com/dasporal/svelte-cookie-manager"
+		class="scm-text-white hover:scm-text-slate-200 hover:scm-underline">By dasporal</a>
 </div>
