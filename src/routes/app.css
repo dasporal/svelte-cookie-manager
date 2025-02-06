@@ -4,7 +4,7 @@
 
 @layer base {
 	:root {
-		--dark: scm- #0f172a;
+		--dark: #0f172a;
 		--cardstart: #111827;
 		--cardend: #080d17;
 		--light: #f1f5f9;
