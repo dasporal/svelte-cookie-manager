@@ -6,5 +6,6 @@ Svelte Library inspired by Hypership's [React Cookie Manager](https://github.com
 
 # Known issues
 
+- Manage Cookie modal doesn't always open
 - Not everything is up to par with Svelte 5 standards
 - Typescript linting
