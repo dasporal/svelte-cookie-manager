@@ -28,7 +28,7 @@
 		manageButtonText = 'Manage Cookies',
 		privacyPolicyUrl = '',
 		privacyPolicyText = 'Privacy Policy',
-		theme = themeStore.value,
+		theme = 'light',
 		displayType = 'banner'
 	}: CookieManagerProps = $props();
 
@@ -73,8 +73,8 @@
 	}
 
 	$effect(() => {
-		if (themeStore.value) theme = themeStore.value;
-		if (displayTypeStore.value) displayType = displayTypeStore.value;
+		theme = themeStore.value;
+		displayType = displayTypeStore.value;
 	});
 
 	onMount(() => {

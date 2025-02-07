@@ -83,19 +83,6 @@ export const storedConsent = (() => {
 	};
 })();
 
-export const displayTypeStore = (() => {
-	let displayType: 'popup' | 'banner' | 'modal' = $state('popup');
-
-	return {
-		get value(): 'popup' | 'banner' | 'modal' {
-			return displayType;
-		},
-		set value(newDisplayType: 'popup' | 'banner' | 'modal') {
-			displayType = newDisplayType;
-		}
-	};
-})();
-
 export const isVisible = (() => {
 	let isVisible = $state(false);
 
@@ -129,12 +116,12 @@ export const displayManage = (() => {
 })();
 
 export const themeStore = (() => {
-	let theme: 'light' | 'dark' = $state(
-		BROWSER ? (localStorage.getItem('cookie-theme') ?? 'light') : null
-	) as 'light' | 'dark';
+	let theme: 'light' | 'dark' | null = $state(
+		BROWSER ? localStorage.getItem('cookie-theme') : null
+	) as 'light' | 'dark' | null;
 
 	return {
-		get value(): 'light' | 'dark' {
+		get value(): 'light' | 'dark' | null {
 			return theme;
 		},
 		set value(newTheme: 'light' | 'dark') {
@@ -147,6 +134,24 @@ export const themeStore = (() => {
 			theme = theme === 'light' ? 'dark' : 'light';
 			if (BROWSER) {
 				localStorage.setItem('cookie-theme', theme);
+			}
+		}
+	};
+})();
+
+export const displayTypeStore = (() => {
+	let displayType: 'popup' | 'banner' | 'modal' | null = $state(
+		BROWSER ? localStorage.getItem('cookie-display') : null
+	) as 'popup' | 'banner' | 'modal' | null;
+
+	return {
+		get value(): 'popup' | 'banner' | 'modal' | null {
+			return displayType;
+		},
+		set value(newDisplayType: 'popup' | 'banner' | 'modal') {
+			displayType = newDisplayType;
+			if (BROWSER) {
+				localStorage.setItem('cookie-display', newDisplayType);
 			}
 		}
 	};

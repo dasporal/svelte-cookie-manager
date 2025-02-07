@@ -24,8 +24,8 @@ export interface CookieManagerProps {
 	manageButtonText?: string;
 	privacyPolicyUrl?: string;
 	privacyPolicyText?: string;
-	theme?: 'light' | 'dark';
-	displayType?: 'popup' | 'banner' | 'modal';
+	theme?: 'light' | 'dark' | null;
+	displayType?: 'popup' | 'banner' | 'modal' | null;
 }
 
 export interface CookieConsenterProps {
